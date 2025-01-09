@@ -32,8 +32,8 @@ function App() {
 		<div className={styles.app}>
 			<h1 className={styles['page-heading']}>Ввод значения</h1>
 			<p className={styles['no-margin-text']}>
-				Текущее значение <code>value</code>: "
-				<output className={styles['current-value']}>{value}</output>"
+				Текущее значение <code>value</code>: `
+				<output className={styles['current-value']}>{value}</output>`
 			</p>
 			<div className={styles.error}>{error}</div>
 			<div className={styles['buttons-container']}>
