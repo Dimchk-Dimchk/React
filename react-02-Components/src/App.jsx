@@ -18,11 +18,14 @@ function App() {
 
   const onAddButtonClick = () => {
 	let id = Date.now();
-	const updateList = [...list, {id, value}]
+	let date = new Date().toLocaleString();
+	console.log(date)
+	const updateList = [...list, {id, value, date}]
 
 		if (value.length >= 3) {
 		setList(updateList) & setError('') & setValue('')
 	};
+	console.log(updateList)
   }
 
   return (
@@ -38,9 +41,10 @@ function App() {
     </div>
     <div className={styles["list-container"]}>
       <h2 className={styles["list-heading"]}>Список:</h2>
-      <p className={styles["no-margin-text"]}>Нет добавленных элементов</p>
+      {!list.length && <p className={styles["no-margin-text"]}>Нет добавленных элементов</p>}
       <ul className={styles.list}>
-        <li className={styles["list-item"]}>{list}</li>
+		{list.map(({ id, value, date }) =>
+        <li className={styles["list-item"]} key={id}>{value} {date}</li>)}
       </ul>
     </div>
   </div>
