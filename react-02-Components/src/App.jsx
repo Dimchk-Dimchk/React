@@ -7,7 +7,7 @@ function App() {
 	const [error, setError] = useState('');
 
 	const onInputButtonClick = () => {
-		let promptValue = prompt('Введите значение');
+		const promptValue = prompt('Введите значение');
 		console.log(promptValue);
 		promptValue.length < 3
 			? setError('Введенное значение должно содержать минимум 3 символа')
@@ -17,8 +17,8 @@ function App() {
 	const isValueVaild = Boolean(value.length >= 3);
 
 	const onAddButtonClick = () => {
-		let id = Date.now();
-		let date = new Date().toLocaleString();
+		const id = Date.now();
+		const date = new Date().toLocaleString();
 		console.log(date);
 		const updateList = [...list, { id, value, date }];
 
