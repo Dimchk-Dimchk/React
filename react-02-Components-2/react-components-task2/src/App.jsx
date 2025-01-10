@@ -23,8 +23,8 @@ const App = () => {
 		setActiveIndex(0);
 	};
 	// И 2 переменных-флага — находимся ли мы на первом шаге, и находимся ли на последнем
-	const firstStep = Boolean(data.indexOf(0));
-	const lastStep = Boolean(data.length-1);
+	const firstStep = Boolean(activeIndex === 0);
+	const lastStep = Boolean(activeIndex === data.length);
 	return (
 		<div className={styles.container}>
 			<div className={styles.card}>
@@ -32,15 +32,15 @@ const App = () => {
 				<div className={styles.steps}>
 					<div className={styles['steps-content']}>
 						{/* Для получения активного контента использйте steps и activeIndex */}
-						{steps[{...data, {}}]}
+
 					</div>
 					<ul className={styles['steps-list']}>
-						{steps.map(([...data, { id }]) => (
+						{/*steps.map(([ { id }]) => (
 												<li className={styles['steps-item']} key={id}>
 													<button className={styles['steps-item-button']}>{activeIndex}</button>
 													Шаг {activeIndex}
 												</li>
-											))}
+											))*/}
 
 						{/* Выводите <li> с помощью массива steps и метода map(), подставляя в разметку нужные значения и классы */}
 						<li className={styles['steps-item'] + ' ' + styles.done}>
@@ -71,8 +71,8 @@ const App = () => {
 						</li>
 					</ul>
 					<div className={styles['buttons-container']}>
-						<button className={styles.button} onClick={onBackClick} disabled={activeIndex <= 1}>Назад</button>
-						{activeIndex === data.length ? <button className={styles.button} onClick={onForwardClick}> Начать сначала </button> : <button className={styles.button} onClick={onForwardClick}>
+						<button className={styles.button} onClick={onBackClick} disabled={firstStep}>Назад</button>
+						{lastStep ? <button className={styles.button} onClick={onStartClick}> Начать сначала </button> : <button className={styles.button} onClick={onForwardClick}>
 							Далее
 							{/* "Начать сначала", можно сделать этой же кнопкой, просто подменять обработчик и текст в зависимости от условия */}
 							{/* Или заменять всю кнопку в зависимости от условия */}
