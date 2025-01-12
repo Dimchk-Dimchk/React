@@ -11,12 +11,10 @@ const App = () => {
 	// И определить 3 обработчика: Клик назад, Клик вперед, Начать сначала
 	const onBackClick = () => {
 		setActiveIndex(activeIndex-1);
-		console.log(activeIndex);
 	};
 
 	const onForwardClick = () => {
 		setActiveIndex(activeIndex+1);
-		console.log(activeIndex);
 	};
 
 	const onStartClick = () => {
