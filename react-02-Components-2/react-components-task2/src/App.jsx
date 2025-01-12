@@ -6,32 +6,30 @@ import data from './data.json';
 const App = () => {
 	// Можно задать 2 состояния — steps и activeIndex
 
-	const [steps, setSteps] = useState([data]);
+	const [steps, setSteps] = useState(data);
 	const [activeIndex, setActiveIndex] = useState(0);
 	console.log(steps)
-	let updateStep = data[activeIndex];
-	console.log(updateStep)
-
 	// И определить 3 обработчика: Клик назад, Клик вперед, Начать сначала
 	const onBackClick = () => {
 		setActiveIndex(activeIndex-1);
 		console.log(activeIndex);
-		setSteps(updateStep)
 	};
 
 	const onForwardClick = () => {
 		setActiveIndex(activeIndex+1);
 		console.log(activeIndex);
-		setSteps(updateStep)
 	};
 
 	const onStartClick = () => {
 		setActiveIndex(0);
-		setSteps(data[0])
 	};
+
+	const onStepClick = () => {
+
+	}
 	// И 2 переменных-флага — находимся ли мы на первом шаге, и находимся ли на последнем
 	const firstStep = Boolean(activeIndex === 0);
-	const lastStep = Boolean(activeIndex === data.length);
+	const lastStep = Boolean(activeIndex === data.length-1);
 	return (
 		<div className={styles.container}>
 			<div className={styles.card}>
@@ -39,43 +37,32 @@ const App = () => {
 				<div className={styles.steps}>
 					<div className={styles['steps-content']}>
 						{/* Для получения активного контента использйте steps и activeIndex */}
-						<p key={steps.id}>{steps.title} <br></br> {steps.content}</p>
+					<p key={steps[activeIndex].id}>{steps[activeIndex].title} <br></br> {steps[activeIndex].content}</p>
 					</div>
 					<ul className={styles['steps-list']}>
-						{/* {steps.map(([ { id }]) => (
-							<li className={styles['steps-item']} key={id}>
-								<button className={styles['steps-item-button']}>{activeIndex}</button>
-								Шаг {activeIndex}
-							</li>
-						))} */}
-
 						{/* Выводите <li> с помощью массива steps и метода map(), подставляя в разметку нужные значения и классы */}
-						<li className={styles['steps-item'] + ' ' + styles.done}>
-							{/* Для того, чтобы вычислить необходимый класс используйте активный индекс, текущий индекс, а также тернарные операторы */}
-							<button className={styles['steps-item-button']}>1</button>
-							{/* При клике на кнопку установка выбранного шага в качестве активного */}
-							Шаг 1
-						</li>
-						<li className={styles['steps-item'] + ' ' + styles.done}>
-							<button className={styles['steps-item-button']}>2</button>
-							Шаг 2
-						</li>
-						<li
-							className={
+						{steps.map(({id}) => (
+							<li className={activeIndex+1 > id.slice(2) ?
+								styles['steps-item'] +
+								' ' +
+								styles.done :
+								activeIndex+1 == id.slice(2) ?
 								styles['steps-item'] +
 								' ' +
 								styles.done +
 								' ' +
-								styles.active
-							}
-						>
-							<button className={styles['steps-item-button']}>3</button>
-							Шаг 3
-						</li>
-						<li className={styles['steps-item']}>
-							<button className={styles['steps-item-button']}>4</button>
-							Шаг 4
-						</li>
+								styles.active :
+								styles['steps-item']
+								}
+								key={id}>
+								<button className={styles['steps-item-button']} onClick={onStepClick}>{id.slice(2)}</button>
+								Шаг {id.slice(2)}
+							</li>
+						))}
+
+							{/* Для того, чтобы вычислить необходимый класс используйте активный индекс, текущий индекс, а также тернарные операторы */}
+							{/* При клике на кнопку установка выбранного шага в качестве активного */}
+
 					</ul>
 					<div className={styles['buttons-container']}>
 						<button className={styles.button} onClick={onBackClick} disabled={firstStep}>Назад</button>
