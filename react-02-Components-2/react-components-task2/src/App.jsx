@@ -34,7 +34,7 @@ const App = () => {
 				<div className={styles.steps}>
 					<div className={styles['steps-content']}>
 						{/* Для получения активного контента использйте steps и activeIndex */}
-					<p key={steps[activeIndex].id}>{steps[activeIndex].title} <br></br> {steps[activeIndex].content}</p>
+					<p key={steps[activeIndex].id}>{steps[activeIndex].content}</p>
 					</div>
 					<ul className={styles['steps-list']}>
 						{/* Выводите <li> с помощью массива steps и метода map(), подставляя в разметку нужные значения и классы */}
