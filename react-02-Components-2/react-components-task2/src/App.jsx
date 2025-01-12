@@ -8,7 +8,6 @@ const App = () => {
 
 	const [steps, setSteps] = useState(data);
 	const [activeIndex, setActiveIndex] = useState(0);
-	console.log(steps)
 	// И определить 3 обработчика: Клик назад, Клик вперед, Начать сначала
 	const onBackClick = () => {
 		setActiveIndex(activeIndex-1);
@@ -24,8 +23,8 @@ const App = () => {
 		setActiveIndex(0);
 	};
 
-	const onStepClick = () => {
-
+	const onStepClick = (index) => {
+		setActiveIndex(index)
 	}
 	// И 2 переменных-флага — находимся ли мы на первом шаге, и находимся ли на последнем
 	const firstStep = Boolean(activeIndex === 0);
@@ -41,6 +40,7 @@ const App = () => {
 					</div>
 					<ul className={styles['steps-list']}>
 						{/* Выводите <li> с помощью массива steps и метода map(), подставляя в разметку нужные значения и классы */}
+						{/* Для того, чтобы вычислить необходимый класс используйте активный индекс, текущий индекс, а также тернарные операторы */}
 						{steps.map(({id}) => (
 							<li className={activeIndex+1 > id.slice(2) ?
 								styles['steps-item'] +
@@ -55,14 +55,11 @@ const App = () => {
 								styles['steps-item']
 								}
 								key={id}>
-								<button className={styles['steps-item-button']} onClick={onStepClick}>{id.slice(2)}</button>
+								{/* При клике на кнопку установка выбранного шага в качестве активного */}
+								<button className={styles['steps-item-button']} onClick={() => onStepClick(id.slice(2) - 1)}>{id.slice(2)}</button>
 								Шаг {id.slice(2)}
 							</li>
 						))}
-
-							{/* Для того, чтобы вычислить необходимый класс используйте активный индекс, текущий индекс, а также тернарные операторы */}
-							{/* При клике на кнопку установка выбранного шага в качестве активного */}
-
 					</ul>
 					<div className={styles['buttons-container']}>
 						<button className={styles.button} onClick={onBackClick} disabled={firstStep}>Назад</button>
