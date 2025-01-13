@@ -10,7 +10,7 @@
 	gap: 10px;
 }
 
-.button {
+.buttons-container button {
 	padding: 0.5em 0.75em;
 	background-color: hsl(var(--accent-color-hue), var(--accent-color-saturation), 92%);
 	font-size: 18px;
@@ -18,11 +18,11 @@
 	transition: background-color 0.15s ease;
 }
 
-.button:hover {
+.buttons-container button:hover {
 	background-color: hsl(var(--accent-color-hue), var(--accent-color-saturation), 87%);
 }
 
-.button:disabled {
+.buttons-container button:disabled {
 	background-color: var(--disabled-color);
 }
 
