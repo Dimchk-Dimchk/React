@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styles from './app.module.css';
 import data from './data.json';
-import { act } from 'react';
 
 
 const App = () => {
