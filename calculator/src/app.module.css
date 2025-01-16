@@ -34,6 +34,11 @@
 	padding: 15px 20px;
 }
 
+.steps-content.result {
+	font-weight: bold;
+	color: green;
+}
+
 .steps-list {
 	list-style: none;
 	margin: 0;
