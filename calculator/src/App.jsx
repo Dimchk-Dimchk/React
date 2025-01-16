@@ -54,8 +54,6 @@ const App = () => {
 						operand1+operator+operand2 :
 						result}
 					</div>
-					{/* {result != null && <div className={[styles['steps-content'] + ' ' + styles.result]}> {result}
-					</div>} */}
 					<ul className={styles['steps-list']}>
 						{nums.map((id, index) => (
 							<li
