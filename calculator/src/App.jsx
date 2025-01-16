@@ -1,35 +1,39 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import styles from './app.module.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+	const nums = ['0',' 1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+	const [operand1, setOperand1] = useState('')
+	const [operand2, setOperand2] = useState('')
+	const [operator, setOperator] = useState('')
 
-export default App
+	const onNumClick = (index) => {
+		const updateOperand = +nums[index]
+		operator === '' ? setOperand1(updateOperand) : setOperand2(updateOperand);
+
+	}
+
+	return (
+		<div className={styles.container}>
+			<div className={styles.card}>
+				<div className={styles.steps}>
+					<div className={styles['steps-content']}>{operand1}
+					</div>
+					<ul className={styles['steps-list']}>
+						{nums.map((id, index) => (
+							<li
+								key={`nums--${id}`}>
+								<button className={styles['steps-item-button']} onClick={() => onNumClick(nums[index])}>{nums[index]}</button>
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default App;
+
