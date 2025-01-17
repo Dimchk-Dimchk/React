@@ -46,32 +46,32 @@ const App = () => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.card}>
-				<div className={styles.steps}>
-					<div className={[styles['steps-content'],
+				<div className={styles.nums}>
+					<div className={[styles['nums-content'],
 						result && styles.result,
 						].join(' ')}>
 						{!result ?
 						operand1+operator+operand2 :
 						result}
 					</div>
-					<ul className={styles['steps-list']}>
+					<ul className={styles['nums-list']}>
 						{nums.map((id, index) => (
-							<li
+							<li className={styles['nums-list-el']}
 								key={`nums--${id}`}>
-								<button className={styles['steps-item-button']} onClick={() => onNumClick(index)}>{nums[index]}</button>
+								<button className={styles['nums-item-button']} onClick={() => onNumClick(index)}>{nums[index]}</button>
 							</li>
 						))}
 						<li>
-							<button className={styles['steps-item-button']} onClick={() => onOperatorClick('+')}>+</button>
+							<button className={styles['nums-item-button']} onClick={() => onOperatorClick('+')}>+</button>
 						</li>
 						<li>
-							<button className={styles['steps-item-button']} onClick={() => onOperatorClick('-')}>-</button>
+							<button className={styles['nums-item-button']} onClick={() => onOperatorClick('-')}>-</button>
 						</li>
 						<li>
-							<button className={styles['steps-item-button']} onClick={onResultClick}>=</button>
+							<button className={styles['nums-item-button']} onClick={onResultClick}>=</button>
 						</li>
 						<li>
-							<button className={styles['steps-item-button']} onClick={onClearClick}>C</button>
+							<button className={styles['nums-item-button']} onClick={onClearClick}>C</button>
 						</li>
 					</ul>
 				</div>
