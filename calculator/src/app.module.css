@@ -58,35 +58,43 @@
 	grid-area: 4 / 4;
 }
 
-.nums-list-el.zero {
+.nums-list-el:nth-child(1) {
 	grid-area: 4 / 1;
 }
 
-.nums-list-el.one {
+.nums-list-el:nth-child(2) {
 	grid-area: 3 / 1;
 }
-.nums-list-el.two {
+
+.nums-list-el:nth-child(3) {
 	grid-area: 3 / 2;
 }
-.nums-list-el.three {
+
+.nums-list-el:nth-child(4) {
 	grid-area: 3 / 3;
 }
-.nums-list-el.four {
+
+.nums-list-el:nth-child(5) {
 	grid-area: 2 / 1;
 }
-.nums-list-el.five {
+
+.nums-list-el:nth-child(6) {
 	grid-area: 2 / 2;
 }
-.nums-list-el.six {
+
+.nums-list-el:nth-child(7) {
 	grid-area: 2 / 3;
 }
-.nums-list-el.seven {
+
+.nums-list-el:nth-child(8) {
 	grid-area: 1 / 1;
 }
-.nums-list-el.eight {
+
+.nums-list-el:nth-child(9) {
 	grid-area: 1 / 2;
 }
-.nums-list-el.nine {
+
+.nums-list-el:nth-child(10) {
 	grid-area: 1 / 3;
 }
 

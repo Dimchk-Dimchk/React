@@ -56,20 +56,9 @@ const App = () => {
 					</div>
 					<ul className={styles['nums-list']}>
 						{nums.map((id, index) => (
-							<li className={[styles['nums-list-el'],
-								index == '0' && styles.zero,
-								index == '1' && styles.one,
-								index == '2' && styles.two,
-								index == '3' && styles.three,
-								index == '4' && styles.four,
-								index == '5' && styles.five,
-								index == '6' && styles.six,
-								index == '7' && styles.seven,
-								index == '8' && styles.eight,
-								index == '9' && styles.nine,
-								].join(' ')}
+							<li className={styles['nums-list-el']}
 								key={`nums--${id}`}>
-								<button className={styles['nums-item-button']} onClick={() => onNumClick(index)}>{nums[index]}{console.log(index)}</button>
+								<button className={styles['nums-item-button']} onClick={() => onNumClick(index)}>{nums[index]}</button>
 							</li>
 						))}
 						<li className={[styles['nums-list-el'],
